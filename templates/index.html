@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}Início{% endblock %}
+{% block body_id %}index{% endblock %}
+{% block nav_home %}active{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="hero-eyebrow-line">disponível para novos projetos</span>
+      <h1>Construo aplicações web do back-end à interface.</h1>
+      <p>
+        Sou o Mateus, desenvolvedor com foco em Python e Flask. Gosto de pegar
+        uma ideia solta e transformar em algo que roda, resolve um problema real
+        e é fácil de manter depois.
+      </p>
+      <div class="hero-ctas">
+        <a href="/projetos" class="btn btn-primary">Ver projetos</a>
+        <a href="/contato" class="btn btn-ghost">Falar comigo</a>
+      </div>
+    </div>
+
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">mateus.py</span>
+      </div>
+      <div class="terminal-body">
+<div class="line"><span class="tk-kw">class</span> <span class="tk-fn">Desenvolvedor</span>:</div>
+<div class="line">    <span class="tk-kw">def</span> <span class="tk-fn">__init__</span>(self):</div>
+<div class="line">        self.nome = <span class="tk-str">"Mateus Gomes"</span></div>
+<div class="line">        self.stack = [<span class="tk-str">"Python"</span>, <span class="tk-str">"Flask"</span>,</div>
+<div class="line">                      <span class="tk-str">"JavaScript"</span>, <span class="tk-str">"SQL"</span>]</div>
+<div class="line">        self.aprendendo = <span class="tk-str">"sempre"</span></div>
+<div class="line">&nbsp;</div>
+<div class="line"><span class="tk-comment"># >>> Desenvolvedor().stack</span></div>
+<div class="line tk-out">['Python', 'Flask', 'JavaScript', 'SQL']</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap about-grid">
+    <div>
+      <span class="kicker">sobre mim</span>
+      <h2>Da lógica ao layout, sem perder o fio da meada.</h2>
+      <p>
+        Comecei mexendo com automações simples em Python e fui subindo a régua
+        até construir aplicações completas com Flask — rotas, banco de dados,
+        integrações e uma interface que não pareça um rascunho.
+      </p>
+      <p>
+        Curto entender o problema antes de sair escrevendo código, e prefiro
+        entregar algo pequeno que funciona a prometer algo grande que trava.
+      </p>
+    </div>
+    <div class="skill-import">
+      <div><span class="tk-kw">from</span> mateus <span class="tk-kw">import</span> habilidades</div>
+      <div>&nbsp;</div>
+      <div class="skill-tags">
+        <span>Python</span>
+        <span>Flask</span>
+        <span>JavaScript</span>
+        <span>HTML/CSS</span>
+        <span>SQL</span>
+        <span>APIs REST</span>
+        <span>Git</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="kicker">trajetória</span>
+    <h2>Como cheguei até aqui</h2>
+    <div class="timeline">
+      <div class="timeline-item current">
+        <span class="timeline-period">2023 — atual</span>
+        <h3>Analista de Suporte Jr (SD)</h3>
+        <span class="timeline-org">Algar Tech</span>
+        <p>Correção de erros em aplicações via scripts, automação de correções em massa e monitoramento de ameaças cibernéticas e firewall.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-period">3º período — em andamento</span>
+        <h3>Análise e Desenvolvimento de Sistemas</h3>
+        <span class="timeline-org">Estácio de Sá</span>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-period">2018 — 2020</span>
+        <h3>Dashboards e KPIs operacionais</h3>
+        <span class="timeline-org">Sumicity Giga+Fibra</span>
+        <p>Criação de dashboards financeiros e monitoramento de fluxo para apoiar decisões da supervisão.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-period">2016 — 2017</span>
+        <h3>Auxiliar de TI</h3>
+        <span class="timeline-org">Connect Soluções</span>
+        <p>Manutenção de redes e computadores, acesso remoto e controle de estoque.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-period">2014 — 2015</span>
+        <h3>Operador de Atendimento e Control Desk</h3>
+        <span class="timeline-org">Sumicity</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

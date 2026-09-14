@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Mateus Gomes{% endblock %} · Desenvolvedor</title>
+  <meta name="description" content="Portfólio de Mateus Gomes, desenvolvedor Python/Flask.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body id="{% block body_id %}{% endblock %}">
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="/" class="brand"><span class="prompt-symbol">~$</span> mateus.dev</a>
+      <nav class="site-nav">
+        <a href="/" class="{% block nav_home %}{% endblock %}">~/inicio</a>
+        <a href="/projetos" class="{% block nav_projetos %}{% endblock %}">~/projetos</a>
+        <a href="/contato" class="{% block nav_contato %}{% endblock %}">~/contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>&copy; {{ ano or 2026 }} Mateus Gomes</span>
+      <a href="https://github.com/MateusDuarteG" target="_blank" rel="noopener">github.com/MateusDuarteG</a>
+    </div>
+  </footer>
+
+</body>
+</html>
