@@ -5,34 +5,44 @@
 {% block nav_projetos %}active{% endblock %}
 
 {% block content %}
-
 <section class="section" style="border-top: none; padding-top: 56px;">
   <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">~/projetos</span>
-      <h2>O que já construí</h2>
-      <p>Uma seleção do que venho desenvolvendo — do portfólio em si até APIs e automações.</p>
+    <span class="kicker">~/projetos</span>
+    <h2>O que já construí</h2>
+    <p style="color: #a0aec0; margin-bottom: 32px;">
+      Uma seleção do que venho desenvolvendo — do portfólio em si até APIs e automações.
+    </p>
+
+    <div class="projects-list" style="display: flex; flex-direction: column; gap: 20px;">
+      {% for slug, proj in projetos.items() %}
+      <div class="project-card" style="display: flex; justify-content: space-between; align-items: center; padding: 24px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; transition: transform 0.2s ease, border-color 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='rgba(255, 183, 77, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255, 255, 255, 0.08)';">
+        
+        <div style="display: flex; gap: 20px; align-items: flex-start; max-width: 75%;">
+          <div class="project-icon" style="font-family: monospace; color: #ffb74d; background: rgba(255, 183, 77, 0.1); padding: 8px 12px; border-radius: 6px; font-weight: bold;">
+            &lt;/&gt;
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px 0; font-size: 1.25rem;">
+              <a href="/projetos/{{ slug }}" style="color: #fff; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#ffb74d'" onmouseout="this.style.color='#fff'">
+                {{ proj.titulo }}
+              </a>
+            </h3>
+            <p style="margin: 0; color: #a0aec0; font-size: 0.95rem; line-height: 1.5;">
+              {{ proj.descricao_curta }}
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <a href="{{ proj.github }}" target="_blank" rel="noopener" class="btn" style="padding: 10px 16px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; color: #fff; text-decoration: none; font-size: 0.875rem; white-space: nowrap;">
+            Ver repositório
+          </a>
+        </div>
+
+      </div>
+      {% endfor %}
     </div>
 
-    {% if projects %}
-    <ul class="project-list">
-      {% for project in projects %}
-      <li class="project-item">
-        <span class="project-icon">&lt;/&gt;</span>
-        <div class="project-content">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
-        </div>
-        <a href="{{ project.link }}" target="_blank" rel="noopener" class="project-link">Ver repositório</a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <div class="project-list">
-      <div class="empty-state">Nenhum projeto cadastrado ainda.</div>
-    </div>
-    {% endif %}
   </div>
 </section>
-
 {% endblock %}

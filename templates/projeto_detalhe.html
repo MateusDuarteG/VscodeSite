@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}{{ projeto.titulo }} - Detalhes{% endblock %}
+
+{% block content %}
+<section class="section" style="border-top: none; padding-top: 56px;">
+  <div class="wrap">
+    
+    <!-- Botão de Voltar -->
+    <a href="/projetos" style="color: #ffb74d; text-decoration: none; font-family: monospace; display: inline-block; margin-bottom: 24px;">
+      &larr; ~/voltar_para_projetos
+    </a>
+    
+    <div>
+      <span class="kicker">{{ projeto.kicker }}</span>
+      <h2 style="font-size: 2rem; margin-top: 8px;">{{ projeto.titulo }}</h2>
+    </div>
+
+    <!-- Layout em Grid: Conteúdo Principal x Coluna Lateral -->
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 48px; margin-top: 32px; align-items: start;">
+      
+      <!-- Lado Esquerdo: Descrição e Detalhes -->
+      <div>
+        <h3>Sobre o projeto</h3>
+        <p style="color: #a0aec0; line-height: 1.6; margin-top: 12px;">
+          {{ projeto.descricao_completa }}
+        </p>
+
+        {% if projeto.funcionalidades %}
+        <h3 style="margin-top: 32px;">Principais Funcionalidades</h3>
+        <ul style="color: #a0aec0; line-height: 1.8; margin-top: 12px; padding-left: 20px;">
+          {% for func in projeto.funcionalidades %}
+          <li>{{ func }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        <!-- Espaço para imagem/print do projeto -->
+        <div style="margin-top: 32px; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; overflow: hidden; background: #0d1117;">
+          <img src="{{ projeto.imagem }}" alt="Preview do {{ projeto.titulo }}" style="width: 100%; display: block;" onerror="this.style.display='none'">
+        </div>
+      </div>
+
+      <!-- Lado Direito: Tecnologias e Link Externo -->
+      <div style="background: rgba(255, 255, 255, 0.02); padding: 24px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08);">
+        <h4 style="margin: 0 0 16px 0;">Tecnologias</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          {% for tech in projeto.tecnologias %}
+          <span style="background: rgba(255, 183, 77, 0.1); color: #ffb74d; border: 1px solid rgba(255, 183, 77, 0.3); padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; font-family: monospace;">
+            {{ tech }}
+          </span>
+          {% endfor %}
+        </div>
+
+        <div style="margin-top: 32px;">
+          <a href="{{ projeto.github }}" target="_blank" rel="noopener" style="display: block; text-align: center; background: #ffb74d; color: #121212; font-weight: bold; padding: 12px; border-radius: 6px; text-decoration: none;">
+            Ver Código no GitHub &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{% endblock %}
