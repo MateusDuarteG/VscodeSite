@@ -29,12 +29,12 @@ PROJECTS = [
     {
         "title": "Portfólio Pessoal",
         "description": "Site feito em Flask com foco em performance e um visual próprio.",
-        "link": "https://github.com/MateusDuarteG/site_portfolio",
+        "link": "https://github.com/MateusDuarteG/VscodeSite",
     },
     {
         "title": "API Flask",
         "description": "API simples para autenticação de usuários.",
-        "link": "https://github.com/MateusDuarteG/api_flask",
+        "link": "https://github.com/MateusDuarteG/PORJETOFASTAPI",
     },
     {
         "title": "Automação de Tarefas",
