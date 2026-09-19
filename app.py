@@ -28,17 +28,17 @@ mail = Mail(app)
 PROJECTS = [
     {
         "title": "Portfólio Pessoal",
-        "description": "Site feito em Flask com foco em performance e um visual próprio.",
+        "description": "Site feito em Flask com foco em performance, visual próprio e apresentação de trabalhos e projetos pessoais.",
         "link": "https://github.com/MateusDuarteG/VscodeSite",
     },
     {
         "title": "API Flask",
-        "description": "API simples para autenticação de usuários.",
+        "description": "Uma API completa para gerenciamento de pedidos de lanches, com autenticação baseada em tokens JWT e integração com banco de dados.",
         "link": "https://github.com/MateusDuarteG/PORJETOFASTAPI",
     },
     {
         "title": "Automação de Tarefas",
-        "description": "Scripts para automatizar processos repetitivos do dia a dia.",
+        "description": "Api Flask simples, com automação para resposta automatica de e-mails do dia a dia.",
         "link": "https://github.com/MateusDuarteG/automacoes",
     },
 ]
