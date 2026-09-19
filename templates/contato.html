@@ -8,6 +8,8 @@
 
 <section class="section" style="border-top: none; padding-top: 56px;">
   <div class="wrap contact-grid">
+    
+    <!-- COLUNA 1 (ESQUERDA): Texto + Links -->
     <div>
       <span class="kicker">~/contato</span>
       <h2>Bora conversar?</h2>
@@ -15,12 +17,15 @@
         Me manda uma mensagem sobre o seu projeto, uma vaga ou só pra trocar
         uma ideia sobre desenvolvimento. Costumo responder em até 2 dias úteis.
       </p>
-      <div class="contact-links">
+
+      <div class="contact-links" style="margin-top: 24px;">
         <a href="mailto:mateuscp1708@gmail.com">mateuscp1708@gmail.com</a>
         <a href="https://github.com/MateusDuarteG" target="_blank" rel="noopener">github.com/MateusDuarteG</a>
+        <a href="https://www.linkedin.com/in/mateus-duarte-gomes-71b241202/" target="_blank" rel="noopener">linkedin.com/in/mateus-duarte-gomes</a>
       </div>
     </div>
 
+    <!-- COLUNA 2 (DIREITA): Formulário -->
     <div>
       {% if status == "success" %}
       <div class="form-note success">Mensagem enviada! Vou te responder em breve.</div>
@@ -44,6 +49,7 @@
         <button type="submit" class="btn btn-primary">Enviar mensagem</button>
       </form>
     </div>
+
   </div>
 </section>
 
