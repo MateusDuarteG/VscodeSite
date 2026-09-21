@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}Mateus Gomes{% endblock %} · Desenvolvedor</title>
@@ -34,6 +35,6 @@
       <a href="https://github.com/MateusDuarteG" target="_blank" rel="noopener">github.com/MateusDuarteG</a>
     </div>
   </footer>
-
+<script src="{{ url_for('static', filename='js/feedback.js') }}"></script>
 </body>
 </html>

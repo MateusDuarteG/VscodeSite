@@ -53,4 +53,29 @@
   </div>
 </section>
 
+<div class="feedback-card">
+  <p class="feedback-title">O que achou da experiência?</p>
+  
+  <div class="feedback-actions">
+    <button type="button" class="btn-feedback" id="like-btn">
+      👍 Gostei
+    </button>
+    <button type="button" class="btn-feedback" id="dislike-btn">
+      👎 Pode melhorar
+    </button>
+  </div>
+
+  <!-- Campo opcional de sugestão que aparece após o clique -->
+  <div id="feedback-comment-container" class="hidden">
+    <textarea 
+      id="feedback-comment" 
+      placeholder="Quer deixar uma sugestão de melhoria? (Opcional)"
+      rows="3"
+    ></textarea>
+    <button type="button" id="send-feedback-btn">Enviar feedback</button>
+  </div>
+  
+  <p id="feedback-thanks" class="hidden">Obrigado pela sua opinião! 🚀</p>
+</div>
+
 {% endblock %}
