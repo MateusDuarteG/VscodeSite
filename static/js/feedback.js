@@ -39,7 +39,7 @@ if (sendBtn) {
     const { error } = await _supabase
       .from('feedbacks')
       .insert([
-        { voto: votoSelecionado, comentario: comentarioTexto }
+        { tipo: votoSelecionado, comentario: comentarioTexto }
       ]);
 
     if (!error) {
