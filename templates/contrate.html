@@ -64,11 +64,15 @@
         color: #e0e0e0;
         border-left: 4px solid #ff9d00;
     }
+    /* Força absoluta do texto preto e negrito no balão do usuário */
     .user-msg {
         align-self: flex-end;
-        background-color: #ff9d00;
-        color: #121212;
-        font-weight: 600;
+        background-color: #ff9d00 !important;
+        color: #121212 !important;
+        font-weight: 700 !important;
+    }
+    .user-msg p {
+        color: #121212 !important;
     }
     .chat-footer {
         padding: 15px;
@@ -165,16 +169,29 @@ function processarFluxoBot(resposta) {
     const textoLower = resposta.toLowerCase();
 
     if (etapa === 1) {
+        const termosValidos = [
+            "site", "landing", "página", "pagina", "web", "sistema", 
+            "api", "backend", "back-end", "bot", "automacao", "automação", 
+            "app", "aplicativo", "mobile", "loja", "software", "programa", 
+            "script", "banco", "dados", "dashboard", "painel", "criacao", "criação"
+        ];
+
+        const éValido = termosValidos.some(termo => textoLower.includes(termo));
+
+        if (!éValido) {
+            adicionarMensagem("Hmm, não consegui identificar um projeto tecnológico nessa resposta. 😅 Por favor, me informe se você precisa de um **Site, API, Bot, Aplicativo ou Sistema**.", 'bot');
+            return;
+        }
+
         dadosProjeto.tipoObj = resposta;
         
-        // Identifica a categoria para a Etapa 2 Cirúrgica
-        if (textoLower.includes("site") || textoLower.includes("landing") || textoLower.includes("página")) {
+        if (textoLower.includes("site") || textoLower.includes("landing") || textoLower.includes("página") || textoLower.includes("pagina") || textoLower.includes("loja")) {
             dadosProjeto.categoria = "Site";
             adicionarMensagem("Entendido, um projeto web! (Etapa 2) Me conte sobre a identidade visual (cores, referências) e se você já tem o conteúdo ou logotipo definidos.", 'bot');
-        } else if (textoLower.includes("api") || textoLower.includes("backend") || textoLower.includes("sistema")) {
+        } else if (textoLower.includes("api") || textoLower.includes("backend") || textoLower.includes("sistema") || textoLower.includes("banco")) {
             dadosProjeto.categoria = "API";
-            adicionarMensagem("Show, desenvolvimento backend! (Etapa 2) É um CRUD completo? Precisa de autenticação JWT e qual banco de dados prefere (MySQL, PostgreSQL, SQLite)?", 'bot');
-        } else if (textoLower.includes("bot") || textoLower.includes("automacao") || textoLower.includes("automação")) {
+            adicionarMensagem("Show, desenvolvimento backend/sistema! (Etapa 2) É um CRUD completo? Precisa de autenticação JWT e qual banco de dados prefere (MySQL, PostgreSQL, SQLite)?", 'bot');
+        } else if (textoLower.includes("bot") || textoLower.includes("automacao") || textoLower.includes("automação") || textoLower.includes("script")) {
             dadosProjeto.categoria = "Bot";
             adicionarMensagem("Automação e Bots! (Etapa 2) Qual canal principal (WhatsApp, Telegram ou Web) e qual é a principal regra de negócio que ele deve resolver?", 'bot');
         } else if (textoLower.includes("app") || textoLower.includes("aplicativo") || textoLower.includes("mobile")) {
@@ -187,25 +204,40 @@ function processarFluxoBot(resposta) {
         etapa = 2;
 
     } else if (etapa === 2) {
+        if (resposta.length < 3) {
+            adicionarMensagem("Poderia detalhar um pouquinho mais sobre o escopo/funcionalidades para ajudarmos na estimativa?", 'bot');
+            return;
+        }
         dadosProjeto.especifico = resposta;
         adicionarMensagem("Perfeito. Agora sobre a **Etapa 3 (Infraestrutura)**: Você já possui domínio e hospedagem contratados, ou vamos precisar estruturar tudo do zero?", 'bot');
         etapa = 3;
 
     } else if (etapa === 3) {
+        if (resposta.length < 2) {
+            adicionarMensagem("Por favor, informe se já possui hospedagem/domínio ou se precisa de auxílio com a infraestrutura.", 'bot');
+            return;
+        }
         dadosProjeto.infra = resposta;
         adicionarMensagem("Anotado. Passando para a **Etapa 4 (Prazo e Expectativa)**: Para quando você precisa desse projeto pronto e qual a sua urgência?", 'bot');
         etapa = 4;
 
     } else if (etapa === 4) {
+        if (resposta.length < 2) {
+            adicionarMensagem("Poderia nos informar uma estimativa de prazo ou data desejada para a entrega?", 'bot');
+            return;
+        }
         dadosProjeto.prazo = resposta;
         adicionarMensagem("Maravilha! Por fim, na **Etapa 5 (Contato)**: Qual é o seu melhor **E-mail ou WhatsApp** para o Mateus retornar com a proposta?", 'bot');
         etapa = 5;
 
     } else if (etapa === 5) {
+        if (!resposta.includes("@") && resposta.replace(/\D/g, '').length < 8) {
+            adicionarMensagem("Hmm, esse formato de contato não parece válido. Por favor, digite um e-mail válido ou um número de WhatsApp com DDD.", 'bot');
+            return;
+        }
         dadosProjeto.contato = resposta;
         adicionarMensagem("Tudo anotado com sucesso! 🎯 Enviei o briefing completo direto para o e-mail do Mateus. Ele vai analisar os detalhes e entrar em contato em breve!", 'bot');
         
-        // Envia para o backend Flask disparar o e-mail
         fetch('/api/salvar-orcamento', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

@@ -28,8 +28,25 @@ mail = Mail(app)
 
 # Dicionário de projetos com as chaves exatas esperadas pelos templates
 PROJETOS = {
+    "uptime_saas": {
+                            "titulo": "Tempo de Atividade SaaS",
+                            "kicker": "~/projetos/uptime_SaaS",
+                            "descricao_curta": "Uma plataforma moderna de monitoramento de disponibilidade (Uptime), latência e geração de Status Pages públicas , construída com arquitetura Multi-Tenant escalável e isolamento rigoroso por empresa.",
+                            "descricao_completa": "Uma plataforma moderna de monitoramento de disponibilidade (Uptime), latência e geração de Status Pages públicas , construída com arquitetura Multi-Tenant escalável e isolamento rigoroso por empresa.",
+                            "github": "https://github.com/MateusDuarteG/uptime_saas",
+                            "tecnologias": ["Python", "Flask", "Celery + Redis", "HTTPX", "Streamlit"],
+                            "funcionalidades": [
+                                "Núcleo de backend/API",
+                                "Fila de Tarefas & Trabalhadores",
+                                "Requisições Assíncronas / Ping Engine",
+                                "Dashboard/Fronend",
+                                "Containerização",
+                        ],
+                        "imagem": "/static/img/portfolio-preview.png"
+    },
+
     "arquitetIDP": {
-                        "titulo": "arquitetura IDP",
+                        "titulo": "Arquitetura IDP",
                         "kicker": "~/projetos/arquitetIDP",
                         "descricao_curta": "Esta IDP permite que um desenvolvedor crie instâncias isoladas de PostgreSQL ou Redis em segundos através de um painel web intuitivo, recebendo credenciais de acesso temporárias e sem a necessidade de abrir chamados para a equipe de infraestrutura.",
                         "descricao_completa": "Uma Plataforma Interna para Desenvolvedores (IDP) leve, self-hosted e focada em automação de infraestrutura. O objetivo deste projeto é dar autonomia aos desenvolvedores para provisionarem bancos de dados e serviços em contêineres de forma autônoma, com credenciais isoladas, controle de tempo de vida (TTL) e monitoramento em tempo real.",
@@ -45,7 +62,7 @@ PROJETOS = {
                     "imagem": "/static/img/portfolio-preview.png"
     },
     "gerenciamentoETL": {
-                    "titulo": "gerenciamento ETL",
+                    "titulo": "Gerenciamento ETL",
                     "kicker": "~/projetos/gerenciamentoETL",
                     "descricao_curta": "Pipeline de ETL e observabilidade em tempo real para infraestrutura de rede e servidores.",
                     "descricao_completa": "O gerenciamentoETL é uma solução robusta de Network Data Pipeline & Observabilidade projetada para coletar métricas de rede, transformar logs e eventos não estruturados e disponibilizar dados valiosos em dashboards analíticos de alta performance.",
@@ -60,7 +77,7 @@ PROJETOS = {
                 "imagem": "/static/img/portfolio-preview.png"
     },
     "gestao_VDI": {
-                "titulo": "gestão de VDIS",
+                "titulo": "Gestão de VDIS",
                 "kicker": "~/projetos/gestao_VDIS",
                 "descricao_curta": "Uma aplicação completa desenvolvida para facilitar a gestão, monitoramento e controle de ambientes de VDI (Virtual Desktop Infrastructure).",
                 "descricao_completa": "O gestao_vdis é uma solução Self-Hosted desenvolvida para simplificar a criação, gerenciamento e acesso a ambientes remotos virtuais. A plataforma orquestra instâncias isoladas em contêineres, permitindo a usuários gerenciar áreas de trabalho com baixo consumo de recursos de hardware.",
