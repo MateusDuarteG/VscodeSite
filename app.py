@@ -3,6 +3,7 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, abort
+from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
 
 load_dotenv()
@@ -27,66 +28,6 @@ mail = Mail(app)
 
 # Dicionário de projetos com as chaves exatas esperadas pelos templates
 PROJETOS = {
-    "arquitetIDP": {
-                        "titulo": "arquitetura IDP",
-                        "kicker": "~/projetos/arquitetIDP",
-                        "descricao_curta": "Esta IDP permite que um desenvolvedor crie instâncias isoladas de PostgreSQL ou Redis em segundos através de um painel web intuitivo, recebendo credenciais de acesso temporárias e sem a necessidade de abrir chamados para a equipe de infraestrutura.",
-                        "descricao_completa": "Uma Plataforma Interna para Desenvolvedores (IDP) leve, self-hosted e focada em automação de infraestrutura. O objetivo deste projeto é dar autonomia aos desenvolvedores para provisionarem bancos de dados e serviços em contêineres de forma autônoma, com credenciais isoladas, controle de tempo de vida (TTL) e monitoramento em tempo real.",
-                        "github": "https://github.com/MateusDuarteG/arquitetIDP#-funcionalidades-principais",
-                        "tecnologias": ["Python", "Flask", "SQLAlchemy", "APScheduler", "Streamlit"],
-                        "funcionalidades": [
-                            "Portal Self-Service",
-                            "Suporte a Múltiplos Serviços",
-                            "Geração Automática de Credenciais",
-                            "Gerenciador de Ciclo de Vida",
-                            "Trilha de Auditoria",
-                    ],
-                    "imagem": "/static/img/portfolio-preview.png"
-    },
-    "gerenciamentoETL": {
-                    "titulo": "gerenciamento ETL",
-                    "kicker": "~/projetos/gerenciamentoETL",
-                    "descricao_curta": "Pipeline de ETL e observabilidade em tempo real para infraestrutura de rede e servidores.",
-                    "descricao_completa": "O gerenciamentoETL é uma solução robusta de Network Data Pipeline & Observabilidade projetada para coletar métricas de rede, transformar logs e eventos não estruturados e disponibilizar dados valiosos em dashboards analíticos de alta performance.",
-                    "github": "https://github.com/MateusDuarteG/gerenciamentoETL",
-                    "tecnologias": ["Python", "Flask", "Celery", "SQLite", "Docker"],
-                    "funcionalidades": [
-                        "Extração (Extract)",
-                        "Transformação (Transform)",
-                        "Dashboard Interativo",
-                        "Fila de Tarefas",
-                ],
-                "imagem": "/static/img/portfolio-preview.png"
-    },
-    "gestao_VDI": {
-                "titulo": "gestão de VDIS",
-                "kicker": "~/projetos/gestao_VDIS",
-                "descricao_curta": "Uma aplicação completa desenvolvida para facilitar a gestão, monitoramento e controle de ambientes de VDI (Virtual Desktop Infrastructure).",
-                "descricao_completa": "O gestao_vdis é uma solução Self-Hosted desenvolvida para simplificar a criação, gerenciamento e acesso a ambientes remotos virtuais. A plataforma orquestra instâncias isoladas em contêineres, permitindo a usuários gerenciar áreas de trabalho com baixo consumo de recursos de hardware.",
-                "github": "https://github.com/MateusDuarteG/gestao_vdis",
-                "tecnologias": ["Python", "Flask", "Streamlite", "Docker", "SQL"],
-                "funcionalidades": [
-                    "Core API",
-                    "Frontend / Dashboard",
-                    "Orquestração de Contêineres",
-            ],
-            "imagem": "/static/img/portfolio-preview.png"
-    },
-    "microSASE": {
-            "titulo": "microSASE",
-            "kicker": "~/projetos/microSASE",
-            "descricao_curta": "O Dashboard interativo (desenvolvido em Streamlit) funciona como um centro de operações estilo SOC (Security Operations Center), fornecendo visibilidade e gestão em 4 níveis:",
-            "descricao_completa": "O microSASE é uma solução inspirada na arquitetura SASE (Secure Access Service Edge), combinando rede (VPN WireGuard) e segurança (Firewall/ACL) em um plano de controle centralizado. O projeto oferece telemetria de tráfego em tempo real, gestão dinâmica de políticas de acesso e execução isolada em container Docker.",
-            "github": "https://github.com/MateusDuarteG/microSASE",
-            "tecnologias": ["Python", "Flask", "Pandas", "WireGuard", "Docker"],
-            "funcionalidades": [
-                "Saúde da Infraestrutura",
-                "Métricas Globais da Rede",
-                "Telemetria e Monitoramento de Nós",
-                "Gestão Operacional & Segurança"
-            ],
-            "imagem": "/static/img/portfolio-preview.png"
-    },    
     "portfolio-pessoal": {
         "titulo": "Portfólio Pessoal",
         "kicker": "~/projetos/portfolio-pessoal",
@@ -179,6 +120,49 @@ def contato():
 
     return render_template("contato.html", status=status, ano=datetime.now().year)
 
+@app.route('/contrate')
+def contrate():
+    return render_template('contrate.html')
+
+@app.route('/api/salvar-orcamento', methods=['POST'])
+def salvar_orcamento():
+    dados = request.get_json()
+    
+    tipo = dados.get('tipo', 'Não informado')
+    escopo = dados.get('escopo', 'Não informado')
+    infra = dados.get('infra', 'Não informado')
+    prazo = dados.get('prazo', 'Não informado')
+    contato = dados.get('contato', 'Não informado')
+
+    # Monta o corpo do e-mail formatado com todas as respostas dinâmicas
+    assunto = f"🚀 Novo Pré-Orçamento via Assistente: {tipo}"
+    corpo_email = f"""
+    Novo pré-orçamento detalhado recebido através do assistente virtual do portfólio:
+
+    📌 Tipo de Projeto: {tipo}
+    🛠️ Detalhes / Escopo Específico: {escopo}
+    🌐 Infraestrutura / Hospedagem: {infra}
+    ⏱️ Prazo / Expectativa: {prazo}
+    📞 Contato do Cliente: {contato}
+    """
+
+    print("Novo Pré-Orçamento Recebido:")
+    print(corpo_email)
+
+    # Disparando o e-mail de forma idêntica à rota /contato usando Flask-Mail
+    try:
+        msg = Message(
+            subject=assunto,
+            recipients=[CONTACT_RECEIVER],
+            body=corpo_email
+        )
+        mail.send(msg)
+        print("E-mail de orçamento enviado com sucesso!")
+    except Exception as exc:
+        app.logger.error("Falha ao enviar e-mail de orçamento: %s", exc)
+        print(f"Erro ao enviar e-mail: {exc}")
+    
+    return jsonify({"status": "sucesso", "mensagem": "Orçamento enviado com sucesso!"})
 
 if __name__ == "__main__":
     app.run(debug=True)
