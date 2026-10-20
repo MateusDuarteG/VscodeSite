@@ -3,6 +3,7 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, abort
+from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
 
 load_dotenv()
@@ -179,6 +180,49 @@ def contato():
 
     return render_template("contato.html", status=status, ano=datetime.now().year)
 
+@app.route('/contrate')
+def contrate():
+    return render_template('contrate.html')
+
+@app.route('/api/salvar-orcamento', methods=['POST'])
+def salvar_orcamento():
+    dados = request.get_json()
+    
+    tipo = dados.get('tipo', 'Não informado')
+    escopo = dados.get('escopo', 'Não informado')
+    infra = dados.get('infra', 'Não informado')
+    prazo = dados.get('prazo', 'Não informado')
+    contato = dados.get('contato', 'Não informado')
+
+    # Monta o corpo do e-mail formatado com todas as respostas dinâmicas
+    assunto = f"🚀 Novo Pré-Orçamento via Assistente: {tipo}"
+    corpo_email = f"""
+    Novo pré-orçamento detalhado recebido através do assistente virtual do portfólio:
+
+    📌 Tipo de Projeto: {tipo}
+    🛠️ Detalhes / Escopo Específico: {escopo}
+    🌐 Infraestrutura / Hospedagem: {infra}
+    ⏱️ Prazo / Expectativa: {prazo}
+    📞 Contato do Cliente: {contato}
+    """
+
+    print("Novo Pré-Orçamento Recebido:")
+    print(corpo_email)
+
+    # Disparando o e-mail de forma idêntica à rota /contato usando Flask-Mail
+    try:
+        msg = Message(
+            subject=assunto,
+            recipients=[CONTACT_RECEIVER],
+            body=corpo_email
+        )
+        mail.send(msg)
+        print("E-mail de orçamento enviado com sucesso!")
+    except Exception as exc:
+        app.logger.error("Falha ao enviar e-mail de orçamento: %s", exc)
+        print(f"Erro ao enviar e-mail: {exc}")
+    
+    return jsonify({"status": "sucesso", "mensagem": "Orçamento enviado com sucesso!"})
 
 if __name__ == "__main__":
     app.run(debug=True)
