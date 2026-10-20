@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-orcamento">
+    <div class="terminal-header">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="title">mateus.dev — assistente_de_orcamento.py</span>
+    </div>
+    
+    <div id="chat-container" class="chat-box">
+        <div class="mensagem bot-msg">
+            <p>Fala! Sou o assistente virtual do Mateus. Qual tipo de projeto você está precisando tirar do papel hoje? (Ex: Sistema Web, Landing Page, Automação ou Chatbot)</p>
+        </div>
+    </div>
+
+    <div class="chat-input-area">
+        <input type="text" id="user-input" placeholder="Digite sua resposta aqui..." autofocus>
+        <button onclick="enviarMensagem()">Enviar 🚀</button>
+    </div>
+</div>
+
+<script>
+let etapa = 1;
+let dadosProjeto = { tipo: "", escopo: "", prazo: "", contato: "" };
+
+function adicionarMensagem(texto, remetente) {
+    const chatContainer = document.getElementById("chat-container");
+    const msgDiv = document.createElement("div");
+    msgDiv.className = `mensagem ${remetente === 'bot' ? 'bot-msg' : 'user-msg'}`;
+    msgDiv.innerHTML = `<p>${texto}</p>`;
+    chatContainer.appendChild(msgDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+function enviarMensagem() {
+    const input = document.getElementById("user-input");
+    const texto = input.value.trim();
+    if (!texto) return;
+
+    adicionarMensagem(texto, 'user');
+    input.value = "";
+
+    setTimeout(() => {
+        processarFluxoBot(texto);
+    }, 600);
+}
+
+function processarFluxoBot(resposta) {
+    if (etapa === 1) {
+        dadosProjeto.tipo = resposta;
+        adicionarMensagem("Show de bola! E qual é o objetivo principal ou principais funcionalidades que esse projeto precisa ter?", 'bot');
+        etapa = 2;
+    } else if (etapa === 2) {
+        dadosProjeto.escopo = resposta;
+        adicionarMensagem("Entendido. Você já possui domínio, hospedagem ou alguma base de código iniciada, ou vamos criar tudo do zero?", 'bot');
+        etapa = 3;
+    } else if (etapa === 3) {
+        dadosProjeto.prazo = resposta;
+        adicionarMensagem("Perfeito! Para finalizar, qual é o seu **e-mail ou WhatsApp** para que o Mateus possa entrar em contato com a proposta?", 'bot');
+        etapa = 4;
+    } else if (etapa === 4) {
+        dadosProjeto.contato = resposta;
+        adicionarMensagem("Tudo anotado com sucesso! 🎯 Enviei os detalhes direto para o Mateus. Ele vai analisar os requisitos e te retornar em breve.", 'bot');
+        
+        // Enviar os dados via fetch para o backend Flask
+        fetch('/api/salvar-orcamento', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dadosProjeto)
+        });
+
+        document.getElementById("user-input").disabled = true;
+    }
+}
+
+// Permitir envio com Enter
+document.getElementById("user-input").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") enviarMensagem();
+});
+</script>
+{% endblock %}
