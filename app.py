@@ -33,7 +33,7 @@ PROJETOS = {
                             "kicker": "~/projetos/uptime_SaaS",
                             "descricao_curta": "Uma plataforma moderna de monitoramento de disponibilidade (Uptime), latência e geração de Status Pages públicas , construída com arquitetura Multi-Tenant escalável e isolamento rigoroso por empresa.",
                             "descricao_completa": "Uma plataforma moderna de monitoramento de disponibilidade (Uptime), latência e geração de Status Pages públicas , construída com arquitetura Multi-Tenant escalável e isolamento rigoroso por empresa.",
-                            "github": "https://github.com/MateusDuarteG/uptime_saas",
+                            "github": "https://gitdiagram.com/mateusduarteg/uptime_saas",
                             "tecnologias": ["Python", "Flask", "Celery + Redis", "HTTPX", "Streamlit"],
                             "funcionalidades": [
                                 "Núcleo de backend/API",
