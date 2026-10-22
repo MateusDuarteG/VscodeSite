@@ -33,7 +33,7 @@ PROJETOS = {
                             "kicker": "~/projetos/uptime_SaaS",
                             "descricao_curta": "Uma plataforma moderna de monitoramento de disponibilidade (Uptime), latência e geração de Status Pages públicas , construída com arquitetura Multi-Tenant escalável e isolamento rigoroso por empresa.",
                             "descricao_completa": "Uma plataforma moderna de monitoramento de disponibilidade (Uptime), latência e geração de Status Pages públicas , construída com arquitetura Multi-Tenant escalável e isolamento rigoroso por empresa.",
-                            "github": "https://github.com/MateusDuarteG/uptime_saas",
+                            "github": "https://gitdiagram.com/MateusDuarteG/uptime_saas",
                             "tecnologias": ["Python", "Flask", "Celery + Redis", "HTTPX", "Streamlit"],
                             "funcionalidades": [
                                 "Núcleo de backend/API",
@@ -50,7 +50,7 @@ PROJETOS = {
                         "kicker": "~/projetos/arquitetIDP",
                         "descricao_curta": "Esta IDP permite que um desenvolvedor crie instâncias isoladas de PostgreSQL ou Redis em segundos através de um painel web intuitivo, recebendo credenciais de acesso temporárias e sem a necessidade de abrir chamados para a equipe de infraestrutura.",
                         "descricao_completa": "Uma Plataforma Interna para Desenvolvedores (IDP) leve, self-hosted e focada em automação de infraestrutura. O objetivo deste projeto é dar autonomia aos desenvolvedores para provisionarem bancos de dados e serviços em contêineres de forma autônoma, com credenciais isoladas, controle de tempo de vida (TTL) e monitoramento em tempo real.",
-                        "github": "https://github.com/MateusDuarteG/arquitetIDP#-funcionalidades-principais",
+                        "github": "https://gitdiagram.com/MateusDuarteG/arquitetIDP#-funcionalidades-principais",
                         "tecnologias": ["Python", "Flask", "SQLAlchemy", "APScheduler", "Streamlit"],
                         "funcionalidades": [
                             "Portal Self-Service",
@@ -66,7 +66,7 @@ PROJETOS = {
                     "kicker": "~/projetos/gerenciamentoETL",
                     "descricao_curta": "Pipeline de ETL e observabilidade em tempo real para infraestrutura de rede e servidores.",
                     "descricao_completa": "O gerenciamentoETL é uma solução robusta de Network Data Pipeline & Observabilidade projetada para coletar métricas de rede, transformar logs e eventos não estruturados e disponibilizar dados valiosos em dashboards analíticos de alta performance.",
-                    "github": "https://github.com/MateusDuarteG/gerenciamentoETL",
+                    "github": "https://gitdiagram.com/MateusDuarteG/gerenciamentoETL",
                     "tecnologias": ["Python", "Flask", "Celery", "SQLite", "Docker"],
                     "funcionalidades": [
                         "Extração (Extract)",
@@ -81,7 +81,7 @@ PROJETOS = {
                 "kicker": "~/projetos/gestao_VDIS",
                 "descricao_curta": "Uma aplicação completa desenvolvida para facilitar a gestão, monitoramento e controle de ambientes de VDI (Virtual Desktop Infrastructure).",
                 "descricao_completa": "O gestao_vdis é uma solução Self-Hosted desenvolvida para simplificar a criação, gerenciamento e acesso a ambientes remotos virtuais. A plataforma orquestra instâncias isoladas em contêineres, permitindo a usuários gerenciar áreas de trabalho com baixo consumo de recursos de hardware.",
-                "github": "https://github.com/MateusDuarteG/gestao_vdis",
+                "github": "https://gitdiagram.com/MateusDuarteG/gestao_vdis",
                 "tecnologias": ["Python", "Flask", "Streamlite", "Docker", "SQL"],
                 "funcionalidades": [
                     "Core API",
@@ -95,7 +95,7 @@ PROJETOS = {
             "kicker": "~/projetos/microSASE",
             "descricao_curta": "O Dashboard interativo (desenvolvido em Streamlit) funciona como um centro de operações estilo SOC (Security Operations Center), fornecendo visibilidade e gestão em 4 níveis:",
             "descricao_completa": "O microSASE é uma solução inspirada na arquitetura SASE (Secure Access Service Edge), combinando rede (VPN WireGuard) e segurança (Firewall/ACL) em um plano de controle centralizado. O projeto oferece telemetria de tráfego em tempo real, gestão dinâmica de políticas de acesso e execução isolada em container Docker.",
-            "github": "https://github.com/MateusDuarteG/microSASE",
+            "github": "https://gitdiagram.com/MateusDuarteG/microSASE",
             "tecnologias": ["Python", "Flask", "Pandas", "WireGuard", "Docker"],
             "funcionalidades": [
                 "Saúde da Infraestrutura",
@@ -110,7 +110,7 @@ PROJETOS = {
         "kicker": "~/projetos/portfolio-pessoal",
         "descricao_curta": "Site feito em Flask com foco em performance, visual próprio e apresentação de trabalhos e projetos pessoais.",
         "descricao_completa": "Este é o meu portfólio profissional web, desenvolvido utilizando Flask no backend e um design minimalista inspirado em interfaces de terminal. O objetivo principal é centralizar meus projetos, habilidades técnicas e canais de contato de forma performática e responsiva.",
-        "github": "https://github.com/MateusDuarteG/VscodeSite",
+        "github": "https://gitdiagram.com/MateusDuarteG/VscodeSite",
         "tecnologias": ["Python", "Flask", "HTML5", "CSS3", "Jinja2"],
         "funcionalidades": [
             "Arquitetura leve e modular com Flask.",
@@ -125,7 +125,7 @@ PROJETOS = {
         "kicker": "~/projetos/api-flask",
         "descricao_curta": "Uma API completa para gerenciamento de pedidos de lanches, com autenticação baseada em tokens JWT e integração com banco de dados.",
         "descricao_completa": "API RESTful desenvolvida para gerenciar o fluxo completo de pedidos. Inclui controle de autenticação de usuários via tokens JWT, gerenciamento de cardápio e status de pedidos integrados ao banco de dados.",
-        "github": "https://github.com/MateusDuarteG/PORJETOFASTAPI",
+        "github": "https://gitdiagram.com/MateusDuarteG/PORJETOFASTAPI",
         "tecnologias": ["Python", "Flask", "MySQL", "JWT", "SQLAlchemy"],
         "funcionalidades": [
             "Autenticação e autorização de usuários via tokens JWT.",
@@ -140,7 +140,7 @@ PROJETOS = {
         "kicker": "~/projetos/automacao-tarefas",
         "descricao_curta": "API Flask simples, com automação para resposta automática de e-mails do dia a dia.",
         "descricao_completa": "Serviço construído em Python para automatizar rotinas operacionais repetitivas, realizando a leitura de mensagens de entrada e respostas automáticas.",
-        "github": "https://github.com/MateusDuarteG",
+        "github": "https://gitdiagram.com/MateusDuarteG",
         "tecnologias": ["Python", "Flask", "SMTP", "Automations"],
         "funcionalidades": [
             "Conexão automatizada via protocolo SMTP.",

@@ -17,12 +17,12 @@
   <header class="site-header">
     <div class="wrap">
       <a href="/" class="brand"><span class="prompt-symbol">~$</span> mateus.dev</a>
-      <nav class="site-nav">
-        <a href="/" class="{% block nav_home %}{% endblock %}">~/inicio</a>
-        <a href="/projetos" class="{% block nav_projetos %}{% endblock %}">~/projetos</a>
-        <a href="/contrate" class="{% block nav_contrate %}{% endblock %}">~/contrate</a>
-        <a href="/contato" class="{% block nav_contato %}{% endblock %}">~/contato</a>
-      </nav>
+      <nav class="nav-container">
+          <a href="{{ url_for('index') }}">~/inicio</a>
+          <a href="{{ url_for('projetos') }}">~/projetos</a>
+          <a href="{{ url_for('contrate') }}">~/contrate</a>
+          <a href="{{ url_for('contato') }}">~/contato</a>
+    </nav>
     </div>
   </header>
 
