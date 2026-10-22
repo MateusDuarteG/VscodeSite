@@ -660,3 +660,64 @@ p {
   cursor: pointer;
   font-size: 0.8rem;
 }
+/* ==========================================
+   MENU NAVEGAÇÃO - ESTILO PILL / CAIXINHA 3D
+   ========================================== */
+.nav-container, nav {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  padding: 8px 24px;
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Links de navegação dentro do menu */
+nav a, .nav-container a {
+  color: #a0aec0;
+  text-decoration: none;
+  font-family: monospace;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:hover, nav a.active,
+.nav-container a:hover, .nav-container a.active {
+  color: #ff9d42; /* Mantendo seu tom de destaque */
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================
+   BOLINHAS DE CONTROLE ESTILO TERMINAL/MAC
+   ========================================== */
+.window-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red {
+  background-color: #ff5f56;
+}
+
+.dot-yellow {
+  background-color: #ffbd2e;
+}
+
+.dot-green {
+  background-color: #27c93f;
+}
